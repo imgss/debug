@@ -1,14 +1,17 @@
 {
-  "name": "debug",
-  "version": "4.3.2",
+  "name": "mp-debug",
+  "version": "0.1.0",
   "repository": {
     "type": "git",
-    "url": "git://github.com/visionmedia/debug.git"
+    "url": "git://github.com/imgss/debug.git"
   },
+  "homepage": "",
   "description": "small debugging utility",
   "keywords": [
     "debug",
     "log",
+    "mini-program",
+    "weapp",
     "debugger"
   ],
   "files": [
@@ -52,7 +55,7 @@
     }
   },
   "main": "./src/index.js",
-  "browser": "./src/browser.js",
+  "browser": "./src/mp.js",
   "engines": {
     "node": ">=6.0"
   }
