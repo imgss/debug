@@ -14,7 +14,10 @@ $ npm install mp-debug
 
 ```js
 import debug from 'mp-debug';
+// in mini-program
 wx.setStorageSync('debug', 'worker:*');
+// in browser
+localStorage.debug = 'worker:*';
 ```
 
 And then refresh the page.
