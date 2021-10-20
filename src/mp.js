@@ -250,14 +250,15 @@ function localstorage() {
 				removeItem: (key) => wx.removeStorageSync(key)
 			}
 		}
-
 		if (window && window.localStorage) {
-			return localstorage;
+			return localStorage;
 		}
 
-		console.warn('invalid environment 🌵');
-
 	} catch (error) {
+		if (window && window.localStorage) {
+			return localStorage;
+		}
+		console.error('get storage error', error);
 		// Swallow
 		// XXX (@Qix-) should we be logging these?
 	}
