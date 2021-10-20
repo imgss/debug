@@ -243,11 +243,20 @@ function localstorage() {
 	try {
 		// TVMLKit (Apple TV JS Runtime) does not have a window object, just localStorage in the global context
 		// The Browser also has localStorage in the global context.
-		return {
-			setItem: (key, value) => wx.setStorageSync(key, value),
-			getItem: (key) => wx.getStorageSync(key),
-			removeItem: (key) => wx.removeStorageSync(key)
+		if (wx && wx.getStorageSync) {
+			return {
+				setItem: (key, value) => wx.setStorageSync(key, value),
+				getItem: (key) => wx.getStorageSync(key),
+				removeItem: (key) => wx.removeStorageSync(key)
+			}
 		}
+
+		if (window && window.localStorage) {
+			return localstorage;
+		}
+
+		console.warn('invalid environment 🌵');
+
 	} catch (error) {
 		// Swallow
 		// XXX (@Qix-) should we be logging these?
